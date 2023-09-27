@@ -6,12 +6,6 @@
 #include <vector>
 #include <algorithm>
 
-//Delete operation
-//Remeber to delete associate function 
-//also you should have to call a function to set the gradient
-//The default will just be 1
-//Guess there are some conditions when you'd won't to actually set grad if you want to replace it with
-//Another values gradient 
 class Value {
 public:
     //basic overload operations and constructor
@@ -27,7 +21,6 @@ public:
     Value operator-(float& other);
     Value operator/(Value& other);
     Value tanh_h();
-    //Value relu();
 
     //backward function and helper (build_topo)
     void backward();
