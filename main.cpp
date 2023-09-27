@@ -28,17 +28,5 @@ int main() {
     std::cout << "n: " << n << "\n";
     std::cout << "o: " << o << "\n";
 
-
-
-
-
-
-
-
-
-
-
-
-
     return 0;
 }
