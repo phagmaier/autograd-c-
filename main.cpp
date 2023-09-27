@@ -2,7 +2,8 @@
 #include "value.h"
 #include "myFunctions.h"
 
-
+//Just showing an example of performing a couple operations and then tesitng to make sure the gradient is wroking
+// NOTE: to use tanh you have to use it from the value class not implimented as a seperate function
 int main() {
    Value x1{2.0};
    Value x2{0.0};
