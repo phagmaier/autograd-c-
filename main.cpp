@@ -14,7 +14,7 @@ int main() {
    Value x1w1x2w2 = x1w1 + x2w2;
    Value n = x1w1x2w2 + b;
    Value o = n.tanh_h();
-   //Value o = tan_h(n);
+   //Value o = tan_h(n); // Think this works if I call it as a method from the Value class
    o.backward();
 
     std::cout << "w2: " << w2 << "\n";
