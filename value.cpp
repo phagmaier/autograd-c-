@@ -20,8 +20,6 @@ Value Value::operator+(Value& other) {
     Value out{val + other.val};
     out.children.insert(this);
     out.children.insert(&other);
-    //may not actually want the refrence but we shall see
-    //can always create pointers or just copy the vals
     out.my_back = [this,&other,&out](){
         this->grad += out.grad;
         other.grad += out.grad;
@@ -34,7 +32,6 @@ Value Value::operator+(const float& other) {
     return *this + val_other;
 }
 
-//Okay what i'm going to have to do is pass out.grad as
 Value Value::operator*(Value& other) {
     Value out{val * other.val};
     out.children.insert(this);
@@ -94,30 +91,6 @@ Value Value::tanh_h() {
     return out;
 }
 
-/*
- Value tan_h(Value& myVal){
-    float val = myVal.val;
-    float x = std::tanh(val);
-    Value out{x};
-    out.children.insert(&myVal);
-    out.my_back = [&myVal, &x, &out](){
-        myVal.grad += 1- (x * x) * out.grad;
-    };
-    return myVal;
-}
- */
-/*
-Value relu(Value& myVal) {
-    Value out{(myVal.val > 0) ? myVal.val : 0};
-    out.children.insert(&myVal);
-    out.my_back = [&out, &myVal]() {
-        myVal.grad += (myVal.val > 0) ? myVal.val * out.grad : 0;
-    };
-    return out;
-}
- */
-
-
 void Value::backward() {
    std::vector<Value*> topo;
    std::set<Value*> visited;
@@ -128,7 +101,6 @@ void Value::backward() {
    std::reverse(topo.begin(),topo.end());
 
    for (auto v: topo){
-       //std::cout << "memory address: " << v << " is in topo\n";
        v->my_back();
    }
 }
